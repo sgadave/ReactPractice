@@ -6,6 +6,8 @@ const NavBar=()=>{
             <Link to="/registration"><button type="button">Registration</button></Link>
             <Link to="/login"><button type="button">Login</button></Link>
             <Link to="/userdata"><button type="button">Data</button></Link>
+            <Link to="/getbyid"><button type="button">User Data</button></Link>
+            <Link to="/updatedata"><button type="button">Update User Data</button></Link>
         </div>
     )
 }

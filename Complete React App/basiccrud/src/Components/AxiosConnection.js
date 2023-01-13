@@ -13,6 +13,10 @@ class UserServices{
     addUsers(user){
         return axios.post(this.baseUrl+"adduser",user);
     }
+
+    getUserbyid(userid){
+        return axios.get(this.baseUrl+"userbyid/"+userid);
+    }
 }
 
 export default new UserServices();

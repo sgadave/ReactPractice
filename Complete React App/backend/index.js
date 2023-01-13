@@ -27,7 +27,7 @@ app.get('/user/data', (req, res) => {
 
 app.post('/adduser', (req, res) => {
     console.log("Im AddUser");
-    console.log(req.body); 
+    console.log(req.body);
     let user = req.body;
     // console.log("UserName:"+user.fname);
     let sqlQuery = `INSERT INTO user VALUES ("${user.fname}","${user.lname}","${user.email}","${user.password}")`
@@ -40,6 +40,39 @@ app.post('/adduser', (req, res) => {
         } else {
             console.log("RESULT");
             console.log(JSON.stringify(result));
+            res.json(result);
+        }
+    })
+})
+
+app.get('/userbyid/:userid', (req, res) => {
+    console.log("Im userbyid");
+    console.log("User Id" + req.params.userid);
+    let userid = req.params.userid;
+    console.log("UserName:" + userid.fname);
+    let sqlQuery = `Select * from user where FirstName="${userid}"`
+    console.log(sqlQuery);
+    mySQLCon.query(sqlQuery, (err, result) => {
+        if (err) {
+            console.log("---------ERROR---------");
+            console.log(err);
+            console.log("----------Err---------");
+        } else {
+            console.log("RESULT");
+            console.log(JSON.stringify(result));
+            res.json(result);
+        }
+    })
+})
+
+
+app.put('/updateuser', (req, res) => {
+    mySQLCon.query("Select * from user", (err, result) => {
+        if (err) {
+            console.log("---------ERROR---------");
+            console.log(err);
+            console.log("----------Err---------");
+        } else {
             res.json(result);
         }
     })
